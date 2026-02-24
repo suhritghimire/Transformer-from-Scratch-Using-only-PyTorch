@@ -1,90 +1,67 @@
-# Transformer From Scratch: English to Sanskrit Translation 
+# 🔁 Transformer from Scratch (PyTorch)
 
-Designed and Implemented by **Suhrit Ghimire**
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://python.org)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c)](https://pytorch.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Welcome to a pure PyTorch implementation of the Transformer architecture, built entirely from the ground up. This project demonstrates a deep understanding of the landmark "Attention Is All You Need" paper, applied to the sophisticated task of translating English to Sanskrit.
+A complete, research-grade implementation of the original **"Attention Is All You Need"** Transformer architecture (Vaswani et al., 2017) — built from scratch using only **PyTorch**, without relying on any higher-level libraries.
 
----
-
-## 🚀 Overview
-
-This repository contains a complete, robust, and highly documented implementation of the Transformer model. Unlike implementations that rely on high-level libraries, this project builds every component—from Multi-Head Attention to Positional Encoding—using only fundamental PyTorch tensors and modules.
-
-### Key Features
-- **Pure PyTorch Implementation**: No high-level abstractions; understand every matrix multiplication.
-- **English-to-Sanskrit Translation**: Leveraging the modern `Saamayik` dataset for high-quality contemporary translation.
-- **Custom Tokenization**: Optimized Word-Level tokenizers for both English and Sanskrit.
-- **Visual Attention**: Built-in mechanisms for visualizing attention maps (see `attention_visual.ipynb`).
-- **Comprehensive Training Pipeline**: Includes persistence, validation metrics (BLEU, WER, CER), and Tensorboard integration.
+Trained on an **English–Sanskrit** parallel corpus as a neural machine translation (NMT) task.
 
 ---
 
-## 🛠️ Architecture Deep Dive
+## ✨ Features
 
-The architecture follows the original Transformer design exactly:
-
-### 1. Encoder Stack
-- **Input Embedding**: Vector representation of tokens.
-- **Positional Encoding**: Injecting sequence order information using sine and cosine functions.
-- **Multi-Head Attention**: Allows the model to jointly attend to information from different representation subspaces.
-- **Feed Forward Networks**: Position-wise fully connected layers.
-- **Layer Normalization & Residual Connections**: Essential for training stability and deep networks.
-
-### 2. Decoder Stack
-- **Masked Multi-Head Attention**: Prevents positions from attending to subsequent positions (causal masking).
-- **Encoder-Decoder Attention**: Allows the decoder to focus on relevant parts of the input sequence.
-- **Final Linear & Softmax Layer**: Projects internal representations to vocabulary space for token prediction.
+- Multi-head self-attention and cross-attention
+- Positional encoding (sinusoidal)
+- Label smoothing loss
+- Beam search decoding
+- Attention visualization
+- TensorBoard + Weights & Biases training tracking
 
 ---
 
-## 📥 Dataset
+## 📁 Structure
 
-We utilize the **Saamayik Dataset** (`acomquest/Saamayik`) via Hugging Face. This dataset provides ~53,000 parallel English-Sanskrit sentences, focusing on contemporary prose and pedagogical content, making it superior for modern translation tasks compared to classical poetry-focused corpora.
+```
+transformer-from-scratch/
+├── model.py          # Full Transformer (encoder, decoder, MHA, FFN)
+├── dataset.py        # Tokenization & DataLoader
+├── train.py          # Training loop
+├── config.py         # Hyperparameters
+├── translate.py      # Inference script
+├── Beam_Search.ipynb # Beam search exploration
+├── attention_visual.ipynb  # Attention heatmaps
+└── requirements.txt
+```
 
 ---
 
-## ⚙️ Installation & Usage
+## 🚀 Quickstart
 
-### Prerequisites
-- Python 3.8+
-- PyTorch
-- Hugging Face `datasets` & `tokenizers`
-- `tqdm`, `torchmetrics`, `tensorboard`
-
-### Quick Start
 ```bash
-# Clone the repository
-git clone https://github.com/suhritghimire/Transformer-from-Scratch-Using-only-PyTorch
-cd Transformer-from-Scratch-Using-only-PyTorch
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Start training
 python train.py
 ```
 
----
-
-## 📊 Monitoring Progress
-
-Live training metrics are recorded using Tensorboard. To view the loss and validation metrics (BLEU, WER, CER) in real-time:
-
-```bash
-tensorboard --logdir runs/
-```
+For a Colab-based run: `Colab_Train.ipynb`
 
 ---
 
-## 👨‍💻 Author
+## 📊 Architecture
 
-**Suhrit Ghimire**  
-*AI Enthusiast & Machine Learning Engineer*
-
-This implementation reflects my passion for understanding the inner workings of state-of-the-art NLP models. Every line of code was crafted to ensure clarity, performance, and mathematical correctness.
+| Parameter | Value |
+|-----------|-------|
+| d_model | 512 |
+| Heads | 8 |
+| Encoder Layers | 6 |
+| Decoder Layers | 6 |
+| FFN dim | 2048 |
+| Source Lang | English |
+| Target Lang | Sanskrit |
 
 ---
 
-## 📜 License
+## 📚 Reference
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+> Vaswani, A., et al. (2017). *Attention Is All You Need*. NeurIPS. [arXiv:1706.03762](https://arxiv.org/abs/1706.03762)
