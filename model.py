@@ -1,3 +1,4 @@
+# Authored by Suhrit Ghimire
 import torch
 import torch.nn as nn
 import math

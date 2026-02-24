@@ -1,3 +1,4 @@
+# Authored by Suhrit Ghimire
 from pathlib import Path
 
 def get_config():
@@ -7,9 +8,9 @@ def get_config():
         "lr": 10**-4,
         "seq_len": 350,
         "d_model": 512,
-        "datasource": 'opus_books',
+        "datasource": 'acomquest/Saamayik',
         "lang_src": "en",
-        "lang_tgt": "it",
+        "lang_tgt": "sa",
         "model_folder": "weights",
         "model_basename": "tmodel_",
         "preload": "latest",
