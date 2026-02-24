@@ -1,4 +1,4 @@
-# Transformer From Scratch: English to Sanskrit Translation 🕉️
+# Transformer From Scratch: English to Sanskrit Translation 
 
 Designed and Implemented by **Suhrit Ghimire**
 
