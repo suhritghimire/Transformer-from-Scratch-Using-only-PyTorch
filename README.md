@@ -4,64 +4,77 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c)](https://pytorch.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A complete, research-grade implementation of the original **"Attention Is All You Need"** Transformer architecture (Vaswani et al., 2017) — built from scratch using only **PyTorch**, without relying on any higher-level libraries.
+A research-grade implementation of the original **"Attention Is All You Need"** Transformer architecture (Vaswani et al., 2017), built from scratch using **PyTorch**. This project demonstrates the full pipeline of Neural Machine Translation (NMT), from dataset processing to model training and inference.
 
-Trained on an **English–Urdu** parallel corpus as a neural machine translation (NMT) task.
+## 🌐 English-to-Urdu Translation
+This model is specifically configured for **English-to-Urdu** translation, leveraging the **OPUS-100** dataset. It handles the complexities of Urdu's Perso-Arabic script through custom subword tokenization and optimized training loops.
 
 ---
 
 ## ✨ Features
 
-- Multi-head self-attention and cross-attention
-- Positional encoding (sinusoidal)
-- Label smoothing loss
-- Beam search decoding
-- Attention visualization
-- TensorBoard + Weights & Biases training tracking
+- **Full Architecture**: Implementation of Multi-Head Attention, Positional Encoding, and Feed-Forward networks.
+- **Advanced Decoding**: Support for both Greedy decoding and optimized **Beam Search**.
+- **Hardware Acceleration**: Out-of-the-box support for **MPS (Metal Performance Shaders)** on Mac and CUDA for NVIDIA GPUs.
+- **Monitoring**: Integrated with **TensorBoard** for real-time loss and metric tracking.
+- **Expert Validation**: Includes attention visualization notebooks to audit model focus.
 
 ---
 
-## 📁 Structure
+## 📁 Project Structure
 
-```
+```bash
 transformer-from-scratch/
-├── model.py          # Full Transformer (encoder, decoder, MHA, FFN)
-├── dataset.py        # Tokenization & DataLoader
-├── train.py          # Training loop
-├── config.py         # Hyperparameters
-├── translate.py      # Inference script
-├── Beam_Search.ipynb # Beam search exploration
-├── attention_visual.ipynb  # Attention heatmaps
-└── requirements.txt
+├── model.py          # Core Transformer architecture (Encoder/Decoder)
+├── dataset.py        # Bilingual dataset loading and tokenization logic
+├── train.py          # Training loop with validation and checkpointing
+├── config.py         # Global project and model hyperparameters
+├── translate.py      # Command-line interface for translation inference
+├── Beam_Search.ipynb # Interactive exploration of Beam Search decoding
+└── attention_visual.ipynb  # Visual audit of self-attention heatmaps
 ```
 
 ---
 
 ## 🚀 Quickstart
 
+### 1. Installation
 ```bash
+git clone https://github.com/suhritghimire/transformer-from-scratch.git
+cd transformer-from-scratch
 pip install -r requirements.txt
-python train.py
 ```
 
-For a Colab-based run: `Colab_Train.ipynb`
+### 2. Training
+The model will automatically download the OPUS-100 dataset and build the tokenizers on first run.
+```bash
+python3 train.py
+```
+
+### 3. Inference
+```bash
+python3 translate.py "Hello, how are you?"
+```
 
 ---
 
-## 📊 Architecture
+## 📊 Model Hyperparameters
 
-| Parameter | Value |
-|-----------|-------|
-| d_model | 512 |
-| Heads | 8 |
-| Encoder Layers | 6 |
-| Decoder Layers | 6 |
-| FFN dim | 2048 |
-| Source Lang | English |
-| Target Lang | Urdu |
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| **d_model** | 512 | Model dimensionality |
+| **Heads** | 8 | Number of attention heads |
+| **Layers** | 6 | Encoder and Decoder depth |
+| **d_ff** | 2048 | Feed-forward network dimension |
+| **Dropout** | 0.1 | Regularization rate |
+| **Source** | English | Input Language |
+| **Target** | Urdu | Output Language |
 
 ---
 
-## 📚 Reference
+## 📚 References
 
 > Vaswani, A., et al. (2017). *Attention Is All You Need*. NeurIPS. [arXiv:1706.03762](https://arxiv.org/abs/1706.03762)
+
+---
+© 2025 Suhrit Ghimire. Licensed under [MIT](LICENSE).
