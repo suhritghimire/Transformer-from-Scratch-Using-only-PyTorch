@@ -6,7 +6,7 @@
 
 A complete, research-grade implementation of the original **"Attention Is All You Need"** Transformer architecture (Vaswani et al., 2017) — built from scratch using only **PyTorch**, without relying on any higher-level libraries.
 
-Trained on an **English–Sanskrit** parallel corpus as a neural machine translation (NMT) task.
+Trained on an **English–Urdu** parallel corpus as a neural machine translation (NMT) task.
 
 ---
 
@@ -58,7 +58,7 @@ For a Colab-based run: `Colab_Train.ipynb`
 | Decoder Layers | 6 |
 | FFN dim | 2048 |
 | Source Lang | English |
-| Target Lang | Sanskrit |
+| Target Lang | Urdu |
 
 ---
 
